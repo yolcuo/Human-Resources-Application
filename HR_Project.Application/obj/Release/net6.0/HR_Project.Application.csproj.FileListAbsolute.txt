@@ -1,0 +1,17 @@
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\bin\Release\net6.0\HR_Project.Application.deps.json
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\bin\Release\net6.0\HR_Project.Application.dll
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\bin\Release\net6.0\HR_Project.Application.pdb
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\bin\Release\net6.0\HR_Project.Domain.dll
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\bin\Release\net6.0\HR_Project.Infrastructure.dll
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\bin\Release\net6.0\HR_Project.Domain.pdb
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\bin\Release\net6.0\HR_Project.Infrastructure.pdb
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\HR_Project.Application.csproj.AssemblyReference.cache
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\HR_Project.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\HR_Project.Application.AssemblyInfoInputs.cache
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\HR_Project.Application.AssemblyInfo.cs
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\HR_Project.Application.csproj.CoreCompileInputs.cache
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\HR_Project.Application.csproj.CopyComplete
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\HR_Project.Application.dll
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\refint\HR_Project.Application.dll
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\HR_Project.Application.pdb
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Application\obj\Release\net6.0\ref\HR_Project.Application.dll

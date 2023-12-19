@@ -1,0 +1,39 @@
+﻿@using HR_Project.Application.Models.VMs;
+@using HR_Project.Domain.Enums;
+@model List<ExpenseVM>
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+<h3 class="gradienttext">Filtered Expense List</h3>
+<table class="table table-bordered table-striped table-light">
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Approval Status</th>
+            <th>Request Date</th>
+            <th>Reply Date</th>
+            @*<th>Expense Type</th>*@
+            <th>Currency</th>
+            <th>Document Path</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Amount</td>
+                <td>@item.ApprovalStatus</td>
+                <td>@item.RequestDate</td>
+                <td>@item.ReplyDate</td>
+                @*<td>@item.ExpenseType.Name</td>*@
+                <td>@item.Currency.Name</td>
+                <td>@item.DocumentPath</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <a class="btn btn-success ml-auto " href="/Expense/Index"> Go Back</a>
+</div>

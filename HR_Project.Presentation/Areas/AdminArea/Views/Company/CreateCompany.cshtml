@@ -1,0 +1,234 @@
+﻿@using HR_Project.Presentation.Models.VMs;
+
+@model CreateCompanyVM
+
+
+
+
+
+<div class="content-wrapper">
+    <div class="row" style="height: 50px;">
+    </div>
+
+    <div class="row">
+
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style="text-align:center">Request Expense</h4>
+                    <form class="form-sample" asp-controller="Company" asp-action="CreateCompany" method="post" enctype="multipart/form-data">
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.CompanyName">Company Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Company.CompanyName" />
+                                        <span asp-validation-for="Company.CompanyName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.NumberOfEmployees">Number Of Employees</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" asp-for="Company.NumberOfEmployees" />
+                                        <span asp-validation-for="Company.NumberOfEmployees" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Company Title</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" name="companyTitle">
+                                            <option value="">Select Company Title</option>
+                                            @foreach (var title in Model.CompanyTitles)
+                                            {
+                                                <option value="@title">@title</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.PhoneNumber">Phone</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Company.PhoneNumber" />
+                                        <span asp-validation-for="Company.PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.MersisNo">MersisNo</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Company.MersisNo" />
+                                        <span asp-validation-for="Company.MersisNo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.EmailAddress">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Company.EmailAddress" />
+                                        <span asp-validation-for="Company.EmailAddress" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.TaxNumber">Tax Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Company.TaxNumber" />
+                                        <span asp-validation-for="Company.TaxNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Address.City">City</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Address.City" />
+                                        <span asp-validation-for="Address.City" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.TaxAdministration">Tax Administration</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Company.TaxAdministration" />
+                                        <span asp-validation-for="Company.TaxAdministration" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Address.District">District</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Address.District" />
+                                        <span asp-validation-for="Address.District" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.LogoPath">Logo File</label>
+                                    <div class="col-sm-9">
+                                        <input asp-for="Company.LogoPath" type="file" class="form-control" name="logoFile" accept=".png, .pdf, .jpg, .jpeg" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Address.Neighbourhood">Neighbourhood</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Address.Neighbourhood" />
+                                        <span asp-validation-for="Address.Neighbourhood" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.YearOfEstablishment">Year Of Establishment</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control" asp-for="Company.YearOfEstablishment" min="1900-01-01" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                        <span asp-validation-for="Company.YearOfEstablishment" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Address.Street">Street</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Address.Street" />
+                                        <span asp-validation-for="Address.Street" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Company.ContactStartDate">Contact Start Date</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control" asp-for="Company.ContactStartDate" min="1900-01-01" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                        <span asp-validation-for="Company.ContactStartDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Address.Detail">Address Details</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" asp-for="Address.Detail" />
+                                        <span asp-validation-for="Address.Detail" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br /><br />
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" style="width:200px;height:30px">Create</button>
+                        </div>
+                        <br />
+                        <div>
+                            <a class="btn btn-success ml-auto " href="/Home/Index"> Go Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+	}
+

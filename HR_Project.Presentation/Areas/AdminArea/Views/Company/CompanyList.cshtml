@@ -1,0 +1,65 @@
+﻿@using HR_Project.Application.Models.VMs;
+@model List<CompanyListVM>
+
+<br />
+
+<div class="content-wrapper">
+    <div class="row" style="height: 50px;">
+    </div>
+
+    <div class="row">
+       
+        @*SAĞDAKİ KART*@
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card" style=" justify-content: center; align-items: center;">
+                <div class="card-body">
+                    <h4 class="card-title">Company List</h4>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Logo</th>
+                                        <th>Company Name</th>
+                                        <th>Company Title</th>
+                                        <th>Phone Number</th>
+                                        <th>Email Address</th>
+                                        <th>Addresses</th>
+                                        <th>Details</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td><img src="~/images/@item.LogoPath" alt="Profile Image" style="max-width: 100%; height: auto;"></td>
+                                            <td>@item.CompanyName</td>
+                                            <td>@item.CompanyTitle</td>
+                                            <td>@item.PhoneNumber</td>
+                                            <td>@item.EmailAddress</td>
+                                            <td>
+                                                @foreach (var i in item.Addresses)
+                                                {
+                                                    @(i.Neighbourhood + " / " + i.District + " / " + i.City)
+                                                    <br />
+                                                }
+                                            </td>
+                                            <td><a class="btn btn-warning ml-auto " asp-action="GetDetails" asp-controller="Company" asp-route-id="@item.ID">Get Details</a></td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                            <br />
+                            <a class="btn btn-success ml-auto " href="/Home/Index"> Go Back</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@using HR_Project.Application.Models.VMs;
+@using HR_Project.Domain.Entities.Concrete;
+@using HR_Project.Domain.Enums;
+
+@model List<AdvanceVM>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <h3 class="gradienttext">Filtered Advance List</h3>
+
+    <table class="table table-bordered table-striped table-light">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Approval Status</th>
+                <th>Request Date</th>
+                <th>Reply Date</th>
+                <th>Advance Type</th>
+                <th>Currency</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Amount</td>
+                    <td>@item.Description</td>
+                    <td>@item.ApprovalStatus</td>
+                    <td>@item.RequestDate</td>
+                    <td>@item.ReplyDate</td>
+                    <td>@item.AdvanceType.Name</td>
+                    <td>@item.Currency.Name</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-success ml-auto " href="/Advance/Index"> Go Back</a>
+</div>
+
+
+
+
+
+

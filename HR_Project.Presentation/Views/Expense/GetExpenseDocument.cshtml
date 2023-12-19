@@ -1,0 +1,15 @@
+﻿@using HR_Project.Domain.Entities.Concrete;
+@model Expense
+<br />
+<div class="left-container" style="width: 100%;height:100%">
+	@if (@Model.DocumentPath.Contains(".pdf"))
+	{
+		<iframe src="~/images/@Model.DocumentPath" style="width: 100%; height: 100%;"></iframe>
+
+	}
+	else
+	{
+		<img src="~/images/@Model.DocumentPath" alt="Profile Image" id="profile-image">
+	}
+
+</div>

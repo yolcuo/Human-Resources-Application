@@ -1,0 +1,147 @@
+﻿@using HR_Project.Application.Models.VMs;
+@model PermissionCreateVM
+
+<div class="content-wrapper">
+    <div class="row" style="height: 50px;">
+    </div>
+
+    <div class="row">
+
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title" style="text-align:center">Request Expense</h4>
+                    <form class="form-sample" asp-action="Index" method="post">
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="PermissionTypeID">Permission Type</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" asp-for="PermissionTypeID">
+                                            <option value="">Select Currency</option>
+                                            @foreach (var item in Model.PermissionTypes)
+                                            {
+                                                <option value="@item.ID">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="StartDate">Start Date</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control" asp-for="StartDate" min="1900-01-01" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="start-date" name="StartDate" />
+                                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+
+                                    <div class="col-sm-9">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="ExpirationDate">Expiration Date</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control" asp-for="ExpirationDate" min="1900-01-01" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="end-date" name="ExpirationDate" />
+                                        <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br /><br />
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" style="width:200px;height:30px">Create</button>
+                        </div>
+                        <br />
+                        <div>
+                            <a class="btn btn-success ml-auto " href="/Home/Index"> Go Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const startDateInput = document.getElementById("start-date"); const endDateInput = document.getElementById("end-date");
+            // Bugünün tarihini al
+            const today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            // Ocak 0 ile başladığı için +1 ekleniyor.
+            const yyyy = today.getFullYear();
+            const currentDate = yyyy + '-' + mm + '-' + dd;
+            // startdate'in min tarihini bugün olarak ayarla
+            startDateInput.min = currentDate;
+            // startdate'in değeri değiştiğinde enddate'i güncelle
+            startDateInput.addEventListener('change', function () {
+                const selectedStartDate = new Date(startDateInput.value);
+                selectedStartDate.setDate(selectedStartDate.getDate() + 1);
+                // StartDate'den bir gün sonrasını seç
+                // enddate'in min tarihini selectedStartDate olarak ayarla
+                endDateInput.min = selectedStartDate.toISOString().split('T')[0];
+                endDateInput.value = selectedStartDate.toISOString().split('T')[0];
+            });
+            // Sayfa yüklendiğinde startdate ve enddate'i varsayılan değerlerle doldur
+            startDateInput.value = currentDate;
+            const defaultEndDate = new Date(currentDate);
+            defaultEndDate.setDate(defaultEndDate.getDate() + 1);
+            endDateInput.value = defaultEndDate.toISOString().split('T')[0];
+            // Form submit olduğunda startdate ve enddate'in değerlerini model özelliklerine kopyala
+            document.querySelector('form').addEventListener('submit', function (event) {
+                const startDate = startDateInput.value;
+                const endDate = endDateInput.value;
+                document.querySelector('[name="StartDate"]').value = startDate;
+                document.querySelector('[name="ExpirationDate"]').value = endDate;
+            });
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+@*<div style="height: 100px"></div>
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <label asp-for="PermissionTypeID">Permission Type</label>
+        <select asp-for="PermissionTypeID" class="form-control">
+            @foreach (var item in Model.PermissionTypes)
+            {
+                <option value="@item.ID">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="start-date">From:</label>
+        <input type="date" asp-for="StartDate" id="start-date" name="StartDate">
+
+        <label for="end-date">To:</label>
+        <input type="date" asp-for="ExpirationDate" id="end-date" name="ExpirationDate">
+    </div>
+    <div class="form-group">
+    </div>
+    <button type="submit">Create Request</button>
+</form>*@
+
+
+
+
+

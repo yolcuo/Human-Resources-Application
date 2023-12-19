@@ -1,0 +1,132 @@
+﻿@using HR_Project.Application.Models.DTOs;
+@model CreateManagerDTO
+
+
+
+
+<div class="content-wrapper">
+    <div class="row" style="height: 50px;">
+    </div>
+    <form class="form-sample" asp-action="CreateManager" method="post" enctype="multipart/form-data">
+        <div class="row">
+            @*SOLDAKİ KART*@
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body" style="text-align:center; justify-content: center; align-items: center;">
+
+                        <img src="~/images/@Model.Photo" alt="Profile Image" id="profile-image" style="max-width: 100%; height: auto">
+
+                        <div>
+                            <input asp-for="Photo" type="file" name="profileImage" accept=".jpg, .jpeg, .png" onchange="showSelectImage(this)">
+                            <input asp-for="Photo" type="hidden" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" asp-for="TC">TC No</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="TC" />
+                                <span asp-validation-for="TC" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" asp-for="Name">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="Name" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" asp-for="Surname">Surname</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="Surname" />
+                                <span asp-validation-for="Surname" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" asp-for="CompanyID">CompanyID</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" asp-for="CompanyID">
+                                    <option value="">Select Company</option>
+                                    @foreach (var item in Model.Companies)
+                                    {
+                                        <option value="@item.ID">@item.CompanyName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                       
+
+                      
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" asp-for="BirthDate">Birth Date</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" asp-for="BirthDate" value="@DateTime.Now" />
+                                <span asp-validation-for="BirthDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" asp-for="Phone">Phone Number</label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" asp-for="Phone" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" asp-for="Email">Email</label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" asp-for="Email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <button type="submit" class="btn btn-success" style="width:200px;height:30px">Create</button>
+                        </div>
+
+                        <div class="form-group row">
+                            <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/Photo.js"></script>
+
+@section Scripts
+    {
+    <script>
+        function showSelectImage(input) {
+            var imgElement = document.getElementById("profile-image");
+            var selectFile = input.files[0];
+
+            if (selectFile) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    imgElement.src = e.target.result;
+
+                };
+                reader.readAsDataURL(selectFile);
+            }
+        }
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

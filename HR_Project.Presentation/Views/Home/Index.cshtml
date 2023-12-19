@@ -1,0 +1,76 @@
+﻿@using HR_Project.Application.Models.VMs;
+
+@model PersonnelMainVM
+
+
+
+
+
+<div class="content-wrapper">
+    <div class="row" style="height: 50px;">
+    </div>
+
+    <div class="row">
+        @*SOLDAKİ KART*@
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body" style="text-align:center; justify-content: center; align-items: center;">
+
+                    <img src="~/images/@Model.PersonnelMain.Photo" alt="Profile Image" style="max-width: 100%; height: auto;">
+
+                    <div class="bg-gray-dark flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3" style="background-color:#d3d3d3">
+                        <div>
+                            <h4>
+                                @Model.PersonnelMain.Name @if (Model.PersonnelMain.SecondName != null)
+                                {
+                                    @Model.PersonnelMain.SecondName
+                                }
+                                @Model.PersonnelMain.Surname @if (Model.PersonnelMain.SecondSurname != null)
+                                {
+                                    @Model.PersonnelMain.SecondSurname
+                                } @Model.PersonnelMain.SecondSurname
+                            </h4>
+                        </div>
+                        <div style="text-align:center">
+                            <h6>@Model.PersonnelMain.Title</h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*SAĞDAKİ KART*@
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card" style=" justify-content: center; align-items: center;">
+                <div class="card-body">
+                    <h4 class="card-title" style="text-align:center">Welcome @Model.PersonnelMain.Name</h4>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-md-5">
+
+                            <table class="table">
+
+
+                                <tr>
+                                    <td class="font-weight-medium">Phone:</td>
+                                    <td class="text-left">@Model.PersonnelMain.Phone </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="font-weight-medium">Address:</td>
+                                    <td class="text-left">@Model.Address.Detail, @Model.Address.Neighbourhood<br />@Model.Address.District, @Model.Address.City </td>
+                                </tr>
+
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

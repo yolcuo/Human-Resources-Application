@@ -1,0 +1,155 @@
+﻿@using HR_Project.Application.Models.VMs;
+@using HR_Project.Domain.Entities.Concrete;
+@using HR_Project.Domain.Enums;
+
+@model List<AdvanceVM>
+<div class="content-wrapper">
+    <div class="row" style="height: 50px;"></div>
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="myTabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#pendingRequests">Pending Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#acceptedRequests">Accepted Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#rejectedRequests">Rejected Requests</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="pendingRequests" class="tab-pane fade show active">
+                            <!-- Bekleyen İstekler Tablosu Burada -->
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            @*<th>ID</th>*@
+                                            <th>Advance Type</th>
+                                            <th>Amount</th>
+                                            <th>Currency</th>
+                                            <th>Request Date</th>
+                                           
+                                            <th>Approval Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.ApprovalStatus == ApprovalStatus.Pending)
+                                            {
+                                                <tr style="background-color:white">
+                                                    @*<td>@item.ID</td>*@
+                                                    <td>@item.AdvanceType.Name</td>
+                                                    <td>@item.Amount</td>
+                                                    <td>@item.Currency.Name</td>
+                                                    <td>@item.RequestDate.ToShortDateString()</td>
+                                                    
+                                                    <td>@item.ApprovalStatus</td>
+                                                    <td><a asp-route-id="@item.ID" class="btn btn-danger mdi mdi-delete" asp-action="deleteAdvance" onclick="return confirm('Are you sure you want to delete?')"></a></td>
+
+                                                </tr>
+                                            }
+
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="acceptedRequests" class="tab-pane fade">
+                            <!-- Kabul Edilen İstekler Tablosu Burada -->
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            @*<th>ID</th>*@
+                                            <th>Advance Type</th>
+                                            <th>Amount</th>
+                                            <th>Currency</th>
+                                            <th>Request Date</th>
+                                            <th>Reply Date</th>
+                                            <th>Approval Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.ApprovalStatus == ApprovalStatus.Approved)
+                                            {
+                                                <tr>
+                                                    @*<td>@item.ID</td>*@
+                                                    <td>@item.AdvanceType.Name</td>
+                                                    <td>@item.Amount</td>
+                                                    <td>@item.Currency.Name</td>
+                                                    <td>@item.RequestDate</td>
+                                                    <td>@item.ReplyDate</td>
+                                                    <td>@item.ApprovalStatus</td>
+                                                 
+
+                                                </tr>
+                                            }
+
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="rejectedRequests" class="tab-pane fade">
+                            <!-- Reddedilen İstekler Tablosu Burada -->
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            @*<th>ID</th>*@
+                                            <th>Advance Type</th>
+                                            <th>Amount</th>
+                                            <th>Currency</th>
+                                            <th>Request Date</th>
+                                            <th>Reply Date</th>
+                                            <th>Approval Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.ApprovalStatus == ApprovalStatus.Rejected)
+                                            {
+                                                <tr>
+                                                    @*<td>@item.ID</td>*@
+                                                    <td>@item.AdvanceType.Name</td>
+                                                    <td>@item.Amount</td>
+                                                    <td>@item.Currency.Name</td>
+                                                    <td>@item.RequestDate</td>
+                                                    <td>@item.ReplyDate</td>
+                                                    <td>@item.ApprovalStatus</td>
+                                                    <td>
+                                                        <a asp-action="deleteAdvance" asp-route-id="@item.ID" onclick="return confirm('Are you sure you want to delete?')">
+                                                            <i class="fa fa-trash"></i>
+                                                </a>
+                                                    </td>
+
+                                                </tr>
+                                            }
+
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-success ml-auto " href="/Home/Index"> Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

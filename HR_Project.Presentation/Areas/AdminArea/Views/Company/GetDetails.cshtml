@@ -1,0 +1,79 @@
+﻿@using HR_Project.Presentation.Models.VMs;
+@model CompanyDetailsVM
+
+<div class="content-wrapper">
+    <div class="row" style="height: 50px;">
+    </div>
+
+    <div class="row">
+        @*SOLDAKİ KART*@
+        <div class="col-md-4 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body" style="text-align:center; justify-content: center; align-items: center;">
+
+                    <img src="~/images/@Model.CompanyDetails.LogoPath" alt="Profile Image" style="max-width: 100%; height: auto;">
+
+                    <div class="bg-gray-dark flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                        <div>
+                            <h4>
+                                @Model.CompanyDetails.CompanyName
+
+                            </h4>
+                        </div>
+                        <div style="text-align:center">
+                            <h5>@Model.CompanyDetails.CompanyTitle</h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*SAĞDAKİ KART*@
+        <div class="col-md-8 grid-margin stretch-card">
+            <div class="card" style=" justify-content: center; align-items: center;">
+                <div class="card-body">
+                    <h4 class="card-title">Company Details</h4>
+                    <div class="row">
+                        <div class="col-md-5">
+
+                            <table class="table">
+
+                                <tr>
+                                    <td class="font-weight-medium">Mersis No:</td>
+                                    <td class="text-left"> @Model.CompanyDetails.MersisNo </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-medium">Tax Number:</td>
+                                    <td class="text-left"> @Model.CompanyDetails.TaxNumber </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-medium">Phone Number:</td>
+                                    <td class="text-left">@Model.CompanyDetails.PhoneNumber  </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-medium"> Email Address:</td>
+                                    <td class="text-left">@Model.CompanyDetails.EmailAddress </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-medium">NumberOfEmployees:</td>
+                                    <td class="text-left">@Model.CompanyDetails.NumberOfEmployees </td>
+                                </tr>
+
+
+                            </table>
+                            <br />
+                            <br />
+                            <div>
+                                <a class="btn btn-success ml-auto " asp-action="CompanyList"> Go Back</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

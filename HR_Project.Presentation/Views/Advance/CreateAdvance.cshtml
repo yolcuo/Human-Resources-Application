@@ -1,0 +1,111 @@
+﻿@using HR_Project.Application.Models.DTOs;
+@model AdvanceCreateDTO
+@{
+	decimal personnelSalary = Model.Personnel.Salary;
+}
+
+<div class="content-wrapper" >
+	<div class="row" style="height: 50px;">
+	</div>
+
+	<div class="row">
+
+		<div class="col-12 grid-margin" >
+			<div class="card" >
+				<div class="card-body">
+					<h4 class="card-title" style="text-align:center;color:black" >Request Advance</h4>
+					<form class="form-sample" asp-action="CreateAdvance" method="post" enctype="multipart/form-data">
+						<br />
+						<br />
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label" asp-for="Amount">Amount</label>
+									<div class="col-sm-9">
+										<input type="number" class="form-control" asp-for="Amount" id="amountInput" />
+										<span asp-validation-for="Amount" class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label" asp-for="Description">Description</label>
+									<div class="col-sm-9">
+										<textarea class="form-control" asp-for="Description" ></textarea>
+										<span asp-validation-for="Description" class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label" asp-for="CurrencyCode">Currency Code</label>
+									<div class="col-sm-9">
+										<select class="form-control" asp-for="CurrencyCode">
+											<option value="">Select Currency</option>
+											@foreach (var currency in Model.Currencies)
+											{
+												<option value="@currency.Code">@currency.Code</option>
+											}
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+
+							<div class="col-md-6">
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label" asp-for="AdvanceTypeID">Advance Type</label>
+									<div class="col-sm-9">
+										<select class="form-control" asp-for="AdvanceTypeID">
+											<option value="">Select Advance Type</option>
+											@foreach (var item in Model.AdvanceTypes)
+											{
+												<option value="@item.ID">@item.Name</option>
+											}
+										</select>
+									</div>
+								</div>
+							</div>
+							
+
+						</div>
+						<br /><br />
+						<div class="form-group">
+							<button type="submit" class="btn btn-success" style="width:200px;height:30px">Create</button>
+						</div>
+						<br />
+						<div>
+							<a class="btn btn-success ml-auto " href="/Home/Index"> Go Back</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+
+	//document.addEventListener("DOMContentLoaded", function () {
+	//	var amountInput = document.getElementById("amountInput");
+	//	var personnelSalary = @personnelSalary; // Output the Razor variable as a JavaScript variable
+
+	//	document.querySelector("form").addEventListener("submit", function (event) {
+	//		var advanceTypeID = document.querySelector("select[name='AdvanceTypeID']").value;
+	//		var amount = parseFloat(amountInput.value);
+
+	//		if (advanceTypeID === "1" && amount >= 3 * @personnelSalary) {
+	//			alert("Amount should be less than 3 times the personnel's salary.");
+	//			event.preventDefault(); // Form gönderilmez, sayfa yeniden yüklenmez.
+	//		}
+	//	});
+	//});
+</script>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}

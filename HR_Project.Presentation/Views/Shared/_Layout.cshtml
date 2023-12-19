@@ -1,0 +1,274 @@
+﻿@using HR_Project.Domain.Entities.Concrete;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<Personnel> UserManager;
+@inject SignInManager<Personnel> SignInManager;
+
+@{
+	Personnel per = new Personnel();
+	per = await UserManager.GetUserAsync(User);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Bilge Adam</title>
+	<link rel="stylesheet" href="~/template/assets/vendors/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="~/template/assets/vendors/css/vendor.bundle.base.css">
+
+	<link rel="stylesheet" href="~/template/assets/css/style.css">
+	<link rel="shortcut icon" href="~/template/assets/images/favicon.png" />
+</head>
+<body>
+    <div class="container-scroller" >
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background: linear-gradient(to bottom, #864ddf, #203376); color:white">
+            <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top" style="background: linear-gradient(to bottom, #864ddf, #203376);">
+                <a style="color:whitesmoke; text-emphasis-style; margin-top:10px;" class="sidebar-brand brand-logo" asp-controller="Home" asp-action="Index">BİLGE ADAM</a>
+                <a style="color:whitesmoke; text-emphasis-style" class="sidebar-brand brand-logo-mini" asp-controller="Home" asp-action="Index">BA</a>
+            </div>
+            <ul class="nav" >
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <br />
+
+					<li class="nav-item nav-category">
+						<span class="nav-link">MENU</span>
+					</li>
+					<li class="nav-item menu-items">
+						<a class="nav-link" href="/Home/Index">
+							<span class="menu-icon">
+								<i class="mdi mdi-home"></i>
+							</span>
+							<span class="menu-title">Home</span>
+						</a>
+					</li>
+
+					<li class="nav-item menu-items">
+						<a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+							<span class="menu-icon">
+								<i class="mdi mdi-calendar-multiple"></i>
+							</span>
+							<span class="menu-title">Personnel</span>
+							<i class="menu-arrow"></i>
+						</a>
+						<div class="collapse" id="ui-basic1">
+							<ul class="nav flex-column sub-menu">
+								<li class="nav-item"> <a class="nav-link" href="/Personnel/GetPersonnelDetails">Details</a></li>
+								<li class="nav-item"> <a class="nav-link" href="/Personnel/UpdatePersonnel" )">Update</a></li>
+
+							</ul>
+						</div>
+					</li>
+
+
+					@if (await UserManager.IsInRoleAsync(per, "User") || await UserManager.IsInRoleAsync(per, "Manager"))
+					{
+						<li class="nav-item menu-items">
+							<a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
+								<span class="menu-icon">
+									<i class="mdi mdi-calendar-multiple"></i>
+								</span>
+								<span class="menu-title">Permission</span>
+								<i class="menu-arrow"></i>
+							</a>
+							<div class="collapse" id="ui-basic2">
+								<ul class="nav flex-column sub-menu">
+									<li class="nav-item"> <a class="nav-link" href="/Permission/Index">Request Permission</a></li>
+									<li class="nav-item"> <a class="nav-link" href="/Permission/ListPermissions">List Permissions</a></li>
+
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item menu-items">
+							<a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+								<span class="menu-icon">
+									<i class="mdi mdi-cash-multiple"></i>
+								</span>
+								<span class="menu-title">Expense</span>
+								<i class="menu-arrow"></i>
+							</a>
+							<div class="collapse" id="ui-basic3">
+								<ul class="nav flex-column sub-menu">
+									<li class="nav-item"> <a class="nav-link" href="/Expense/CreateExpenseRequest">Request Expense</a></li>
+									<li class="nav-item"> <a class="nav-link" href="/Expense/Index">List Expenses</a></li>
+
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item menu-items">
+							<a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+								<span class="menu-icon">
+									<i class="mdi mdi-wallet"></i>
+								</span>
+								<span class="menu-title">Advance</span>
+								<i class="menu-arrow"></i>
+							</a>
+							<div class="collapse" id="ui-basic4">
+								<ul class="nav flex-column sub-menu">
+									<li class="nav-item"> <a class="nav-link" href="/Advance/CreateAdvance">Request Advance</a></li>
+									<li class="nav-item"> <a class="nav-link" href="/Advance/Index">List Advances</a></li>
+
+								</ul>
+							</div>
+						</li>
+					}
+
+					@if (await UserManager.IsInRoleAsync(per, "Admin"))
+					{
+						<li class="nav-item menu-items">
+							<a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
+								<span class="menu-icon">
+									<i class="mdi mdi-wallet"></i>
+								</span>
+								<span class="menu-title">Company</span>
+								<i class="menu-arrow"></i>
+							</a>
+							<div class="collapse" id="ui-basic5">
+								<ul class="nav flex-column sub-menu">
+									<li class="nav-item"> <a class="nav-link" href="@Url.Action("CreateCompany","Company",new {area="AdminArea"})">Create Company</a></li>
+									<li class="nav-item"> <a class="nav-link" href="@Url.Action("CompanyList","Company",new {area="AdminArea"})">List Company</a></li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="nav-item menu-items">
+							<a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
+								<span class="menu-icon">
+									<i class="mdi mdi-wallet"></i>
+								</span>
+								<span class="menu-title">Manager</span>
+								<i class="menu-arrow"></i>
+							</a>
+							<div class="collapse" id="ui-basic6">
+								<ul class="nav flex-column sub-menu">
+									<li class="nav-item"> <a class="nav-link" href="@Url.Action("CreateManager","Admin",new {area="AdminArea"})">Create Manager</a></li>
+									<li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Admin",new {area="AdminArea"})">List Manager</a></li>
+								</ul>
+							</div>
+						</li>
+					}
+
+
+					@*<li class="nav-item menu-items">
+						<a class="nav-link" href="~/template/pages/icons/mdi.html">
+							<span class="menu-icon">
+								<i class="mdi mdi-contacts"></i>
+							</span>
+							<span class="menu-title">Icons</span>
+						</a>
+					</li>*@
+
+				}
+			</ul>
+
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper" style="background-color:whitesmoke">
+            <!-- partial:partials/_navbar.html -->
+            <nav class="navbar p-0 fixed-top d-flex flex-row" style="background: linear-gradient(to bottom, #864ddf, #203376);">
+                <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo-mini" href="~/template/index.html"><img src="~/template/assets/images/logo-mini.svg" alt="logo" /></a>
+                </div>
+                <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+
+					<ul class="navbar-nav navbar-nav-right">
+
+
+						<li class="nav-item dropdown">
+							<a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+								<div class="navbar-profile">
+									<img class="img-xs rounded-circle" src="~/images/@per.Photo" alt="">
+									<p class="mb-0 d-none d-sm-block navbar-profile-name">@per.Name @per.Surname</p>
+									<i class="mdi mdi-menu-down d-none d-sm-block"></i>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item preview-item" href="/Personnel/GetPersonnelDetails">
+									<div class="preview-thumbnail">
+										<div class="preview-icon bg-dark rounded-circle">
+											<i class="mdi mdi-book-open text-success"></i>
+										</div>
+									</div>
+									<div class="preview-item-content">
+										<p class="preview-subject mb-1">Details</p>
+									</div>
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item preview-item" href="/Personnel/UpdatePersonnel">
+									<div class="preview-thumbnail">
+										<div class="preview-icon bg-dark rounded-circle">
+											<i class="mdi mdi-pencil text-success"></i>
+										</div>
+									</div>
+									<div class="preview-item-content">
+										<p class="preview-subject mb-1">Update</p>
+									</div>
+								</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item preview-item" href="/Login/Logout">
+									<div class="preview-thumbnail">
+										<div class="preview-icon bg-dark rounded-circle">
+											<i class="mdi mdi-logout text-danger"></i>
+										</div>
+									</div>
+									<div class="preview-item-content">
+										<p class="preview-subject mb-1">Log out</p>
+									</div>
+								</a>
+								<div class="dropdown-divider"></div>
+
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                        <span class="mdi mdi-format-line-spacing"></span>
+                    </button>
+                </div>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel" style="background-color:whitesmoke">
+                @RenderBody()
+
+				<footer class="footer">
+					<div class="d-sm-flex justify-content-center justify-content-sm-between">
+						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Bilge Adam 2023</span>
+						@*<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>*@
+					</div>
+				</footer>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- plugins:js -->
+	<script src="~/template/assets/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page -->
+	<script src="~/template/assets/vendors/chart.js/Chart.min.js"></script>
+	<script src="~/template/assets/vendors/progressbar.js/progressbar.min.js"></script>
+	<script src="~/template/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+	<script src="~/template/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="~/template/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+	<!-- End plugin js for this page -->
+	<!-- inject:js -->
+	<script src="~/template/assets/js/off-canvas.js"></script>
+	<script src="~/template/assets/js/hoverable-collapse.js"></script>
+	<script src="~/template/assets/js/misc.js"></script>
+	<script src="~/template/assets/js/settings.js"></script>
+	<script src="~/template/assets/js/todolist.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page -->
+	<script src="~/template/assets/js/dashboard.js"></script>
+	<!-- End custom js for this page -->
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

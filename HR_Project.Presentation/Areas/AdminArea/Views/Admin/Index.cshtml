@@ -1,0 +1,62 @@
+﻿
+@using HR_Project.Domain.Entities.Concrete;
+@model List<Personnel>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+<br />
+
+<div class="content-wrapper">
+	<div class="row" style="height: 50px;">
+	</div>
+	<form method="post">
+	<div class="row">
+		<div class="col-md-12 grid-margin stretch-card">
+			<div class="card" style=" justify-content: center; align-items: center;">
+				<div class="card-body">
+					<h4 class="card-title">Manager List</h4>
+					<div class="row">
+						<div class="col-md-5">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>TC</th>
+										<th>Name</th>
+										<th>Surname</th>
+										<th>Email</th>
+										<th>Company</th>
+										<th>Phone</th>
+										<th>Photo</th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+
+
+								<tbody>
+									@foreach (var item in Model)
+									{
+										<tr>
+											<td>@item.TC</td>
+											<td>@item.Name</td>
+											<td>@item.Surname</td>
+											<td>@item.Email</td>
+											<td>@item.Company.CompanyName</td>
+											<td>@item.Phone</td>
+												<td><img src="~/images/@item.Photo" alt="Profile Image" style="max-width: 100%; height: auto;"></td>
+											<td><button asp-action="GetPersonnelDetails" type="submit" class="btn btn-warning ml-auto" asp-route-id="@item.Id">Get Details</button></td>
+											<td><button asp-action="DeleteManager" type="submit" class="btn btn-danger fa fa-trash ml-auto" asp-route-id="@item.Id"></button></td>
+										</tr>
+									}
+
+								</tbody>
+							</table>
+							<a class="btn btn-success ml-auto " asp-action="Index" asp-controller="Home"> Go Back</a>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	</form>
+</div>

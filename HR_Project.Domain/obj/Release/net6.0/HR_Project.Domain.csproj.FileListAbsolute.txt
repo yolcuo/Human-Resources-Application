@@ -1,0 +1,12 @@
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\bin\Release\net6.0\HR_Project.Domain.deps.json
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\bin\Release\net6.0\HR_Project.Domain.dll
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\bin\Release\net6.0\HR_Project.Domain.pdb
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\HR_Project.Domain.csproj.AssemblyReference.cache
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\HR_Project.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\HR_Project.Domain.AssemblyInfoInputs.cache
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\HR_Project.Domain.AssemblyInfo.cs
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\HR_Project.Domain.csproj.CoreCompileInputs.cache
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\HR_Project.Domain.dll
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\refint\HR_Project.Domain.dll
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\HR_Project.Domain.pdb
+C:\Users\yolcu\source\repos\HR_Project\HR_Project\HR_Project.Domain\obj\Release\net6.0\ref\HR_Project.Domain.dll
